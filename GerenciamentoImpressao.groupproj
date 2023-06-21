@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{35D3EC2B-89A8-4052-B6CE-E363B13E0CCE}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PrintersSuport.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VCLWebService.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VCLWebServiceEnvio.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VCLWebServiceRecebimento.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PrintersSuport">
+        <MSBuild Projects="PrintersSuport.dproj"/>
+    </Target>
+    <Target Name="PrintersSuport:Clean">
+        <MSBuild Projects="PrintersSuport.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PrintersSuport:Make">
+        <MSBuild Projects="PrintersSuport.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VCLWebService">
+        <MSBuild Projects="VCLWebService.dproj"/>
+    </Target>
+    <Target Name="VCLWebService:Clean">
+        <MSBuild Projects="VCLWebService.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VCLWebService:Make">
+        <MSBuild Projects="VCLWebService.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VCLWebServiceEnvio">
+        <MSBuild Projects="VCLWebServiceEnvio.dproj"/>
+    </Target>
+    <Target Name="VCLWebServiceEnvio:Clean">
+        <MSBuild Projects="VCLWebServiceEnvio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VCLWebServiceEnvio:Make">
+        <MSBuild Projects="VCLWebServiceEnvio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VCLWebServiceRecebimento">
+        <MSBuild Projects="VCLWebServiceRecebimento.dproj"/>
+    </Target>
+    <Target Name="VCLWebServiceRecebimento:Clean">
+        <MSBuild Projects="VCLWebServiceRecebimento.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VCLWebServiceRecebimento:Make">
+        <MSBuild Projects="VCLWebServiceRecebimento.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PrintersSuport;VCLWebService;VCLWebServiceEnvio;VCLWebServiceRecebimento"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PrintersSuport:Clean;VCLWebService:Clean;VCLWebServiceEnvio:Clean;VCLWebServiceRecebimento:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PrintersSuport:Make;VCLWebService:Make;VCLWebServiceEnvio:Make;VCLWebServiceRecebimento:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
