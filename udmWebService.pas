@@ -190,7 +190,8 @@ begin
     finally
       vJsonEnvio.Free;
     end;
-  end;
+  end else
+    Result := 'Arquivo de cadastros de impressoras não encontrado';
 end;
 
 function TdmWebService.GetImpressoes(ARegistro: string): string;

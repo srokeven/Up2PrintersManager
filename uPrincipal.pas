@@ -338,10 +338,10 @@ begin
               FTarefa.CheckCanceled;
               fmtFilaImpressao.Append;
               fmtFilaImpressaoORDEM.AsInteger := O;
-              fmtFilaImpressaoDESCRICAO.AsString := LerJson(vArrayImpressoes.Items[I].ToJSON, 'descricao');
-              fmtFilaImpressaoREGISTRO.AsString := LerJson(vArrayImpressoes.Items[I].ToJSON, 'registroimpressora');
-              fmtFilaImpressaoTIPO_ARQUIVO.AsString := LerJson(vArrayImpressoes.Items[I].ToJSON, 'tipoarquivo');
-              fmtFilaImpressaoRELATORIO_ENCODED.AsString := LerJson(vArrayImpressoes.Items[I].ToJSON, 'relatorioencoded');
+              fmtFilaImpressaoDESCRICAO.AsString := LerJson(vArrayImpressoes.Items[O].ToJSON, 'descricao');
+              fmtFilaImpressaoREGISTRO.AsString := LerJson(vArrayImpressoes.Items[O].ToJSON, 'registroimpressora');
+              fmtFilaImpressaoTIPO_ARQUIVO.AsString := LerJson(vArrayImpressoes.Items[O].ToJSON, 'tipoarquivo');
+              fmtFilaImpressaoRELATORIO_ENCODED.AsString := LerJson(vArrayImpressoes.Items[O].ToJSON, 'relatorioencoded');
               fmtFilaImpressao.Post;
             end;
           finally
@@ -481,8 +481,16 @@ begin
     FTarefa := TTask.Create(
       procedure
       begin
-        GerarFilaImpressao;
-        ExecutaFila;
+        TThread.Synchronize(TThread.CurrentThread,
+        procedure
+        begin
+          GerarFilaImpressao;
+        end);
+        TThread.Synchronize(TThread.CurrentThread,
+        procedure
+        begin
+          ExecutaFila;
+        end);
       end);
   end;
   if (FTarefa.Status = TTaskStatus.WaitingToRun) or (FTarefa.Status = TTaskStatus.Created) then

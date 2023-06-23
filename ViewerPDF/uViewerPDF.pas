@@ -116,6 +116,13 @@ begin
   CarregaImpressoras;
   FReportLink.ComponentPrinter := FComponentPrinter;
   FReportLink.Component := ViewerPDF;
+  if edDiretorio.Text = '' then
+    if not DirectoryExists(IncludeTrailingPathDelimiter(GetCurrentDir) + 'output') then
+      if ForceDirectories(IncludeTrailingPathDelimiter(GetCurrentDir) + 'output') then
+      begin
+        edDiretorio.Text := IncludeTrailingPathDelimiter(GetCurrentDir) + 'output';
+        GravarIni('PDF', 'DIRETORIO', edDiretorio.Text, IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+'configuracao.ini');
+      end;
   if edDiretorio.Text <> '' then
   begin
     FWatcherHandle := FindFirstChangeNotification(
