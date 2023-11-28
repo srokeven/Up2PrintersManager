@@ -168,7 +168,7 @@ begin
   vRegistro := ExtrairRegistro(ExtractFileName(FileName));
   vCompartilhamento := GetCompartilhamentoImpressora(vRegistro);
   vIndexImpressora := dxPrintDevice.Printers.IndexOf(vCompartilhamento);
-  if vIndexImpressora > 0 then
+  if vIndexImpressora >= 0 then
   begin
     dxPrintDevice.PrinterIndex := vIndexImpressora;
     vImpressoraEncontrada := True;
@@ -189,6 +189,8 @@ begin
     FImpressaoComErro := False;
     ViewerPDF.LoadFromFile(FileName);
     try
+      Application.ProcessMessages;
+      Sleep(150);
       FReportLink.Print(False);
       ViewerPDF.Clear;
       if not (FImpressaoComErro) then

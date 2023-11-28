@@ -20,7 +20,13 @@ object fmViewerPDF: TfmViewerPDF
     Top = 49
     Width = 549
     Height = 434
+    Margins.Left = 0
+    Margins.Top = 0
+    Margins.Right = 0
+    Margins.Bottom = 0
     Align = alClient
+    BorderStyle = cxcbsNone
+    ExplicitTop = 51
   end
   object Panel1: TPanel
     Left = 0

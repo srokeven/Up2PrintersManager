@@ -15,6 +15,15 @@
         <Projects Include="VCLWebServiceRecebimento.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="SRVWebService.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SRVWebServiceEnvio.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SRVWebServiceRecebimento.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +68,41 @@
     <Target Name="VCLWebServiceRecebimento:Make">
         <MSBuild Projects="VCLWebServiceRecebimento.dproj" Targets="Make"/>
     </Target>
+    <Target Name="SRVWebService">
+        <MSBuild Projects="SRVWebService.dproj"/>
+    </Target>
+    <Target Name="SRVWebService:Clean">
+        <MSBuild Projects="SRVWebService.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SRVWebService:Make">
+        <MSBuild Projects="SRVWebService.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SRVWebServiceEnvio">
+        <MSBuild Projects="SRVWebServiceEnvio.dproj"/>
+    </Target>
+    <Target Name="SRVWebServiceEnvio:Clean">
+        <MSBuild Projects="SRVWebServiceEnvio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SRVWebServiceEnvio:Make">
+        <MSBuild Projects="SRVWebServiceEnvio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SRVWebServiceRecebimento">
+        <MSBuild Projects="SRVWebServiceRecebimento.dproj"/>
+    </Target>
+    <Target Name="SRVWebServiceRecebimento:Clean">
+        <MSBuild Projects="SRVWebServiceRecebimento.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SRVWebServiceRecebimento:Make">
+        <MSBuild Projects="SRVWebServiceRecebimento.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="PrintersSuport;VCLWebService;VCLWebServiceEnvio;VCLWebServiceRecebimento"/>
+        <CallTarget Targets="PrintersSuport;VCLWebService;VCLWebServiceEnvio;VCLWebServiceRecebimento;SRVWebService;SRVWebServiceEnvio;SRVWebServiceRecebimento"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="PrintersSuport:Clean;VCLWebService:Clean;VCLWebServiceEnvio:Clean;VCLWebServiceRecebimento:Clean"/>
+        <CallTarget Targets="PrintersSuport:Clean;VCLWebService:Clean;VCLWebServiceEnvio:Clean;VCLWebServiceRecebimento:Clean;SRVWebService:Clean;SRVWebServiceEnvio:Clean;SRVWebServiceRecebimento:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="PrintersSuport:Make;VCLWebService:Make;VCLWebServiceEnvio:Make;VCLWebServiceRecebimento:Make"/>
+        <CallTarget Targets="PrintersSuport:Make;VCLWebService:Make;VCLWebServiceEnvio:Make;VCLWebServiceRecebimento:Make;SRVWebService:Make;SRVWebServiceEnvio:Make;SRVWebServiceRecebimento:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

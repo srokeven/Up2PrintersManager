@@ -163,7 +163,7 @@ begin
             end
             else
               Res.Send(TJSONObject.Create.AddPair('mensagem',
-                'Nenhuma impressora encontrada')).Status(THTTPStatus.NotFound);
+                'Nenhuma impressora encontrada')).Status(THTTPStatus.NoContent);
           except
             on e: Exception do
               Res.Send(TJSONObject.Create.AddPair('mensagem', e.Message))

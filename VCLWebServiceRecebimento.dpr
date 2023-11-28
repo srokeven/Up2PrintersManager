@@ -9,7 +9,8 @@ uses
   uRegistroImpressoraController in 'controller\uRegistroImpressoraController.pas',
   Vcl.Themes,
   Vcl.Styles,
-  uUtils in 'utils\uUtils.pas';
+  uUtils in 'utils\uUtils.pas',
+  udmHandle in 'udmHandle.pas' {dmHandle: TDataModule};
 
 {$R *.res}
 

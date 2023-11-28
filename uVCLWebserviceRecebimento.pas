@@ -108,7 +108,7 @@ begin
           dmHandle := TdmHandle.Create(nil);
 
           vJsonArray := TJSONObject.ParseJSONValue(dmHandle.GetPrints(vRegistro)) as TJSONArray;
-          if not(vJsonArray = nil) then
+          if not(vJsonArray = nil) and (vJsonArray.Count > 0) then
           begin
             vJsonResposta := TJSONObject.Create;
             vJsonResposta.AddPair('mensagem', 'ok');
@@ -126,7 +126,7 @@ begin
             Exit;
           end else
             Res.Send<TJSONObject>(TJSONObject.Create.AddPair('mensagem',
-              'Nenhum arquivo de impressão encontrado')).Status(THTTPStatus.NotFound);
+              'Nenhum arquivo de impressão encontrado')).Status(THTTPStatus.NoContent);
 
         except
           on e: Exception do

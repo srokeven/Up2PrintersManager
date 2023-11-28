@@ -22,9 +22,9 @@ uses
   procedure GravarArrayJsonToFile(const JSON: string; const FileName: string); //Grva um arquivo de texto com o conteudo de um array de json
 
 const
-  TOKEN = '';
-  USER_BASIC_AUTH = '';
-  PASSWORD_BASIC_AUTH = '';
+  TOKEN = 'mfjLJKHSDLJhfljasLASuahf983ub334UB43224gfdimo8i5FASDFIEMKFakasdkasmfio90kDKQDOQKSlsmf304';
+  USER_BASIC_AUTH = 'wstech';
+  PASSWORD_BASIC_AUTH = '@ws031469';
 
 implementation
 
